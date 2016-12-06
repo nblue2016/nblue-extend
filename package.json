@@ -1,0 +1,31 @@
+{
+  "name": "nblue-extend",
+  "version": "0.0.1",
+  "description": "nblue modules to extend native object",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nblue2016/nblue-extend.git"
+  },
+  "files": [
+    "lib",
+    "index.js",
+    "readme.md"
+  ],
+  "main": "index",
+  "keywords": [
+    "native"
+  ],
+  "scripts":{
+    "test":"mocha test/start"
+  },
+  "author": "Bruce Jiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nblue2016/nblue-extend/issues"
+  },
+  "homepage": "https://github.com/nblue2016/nblue-extend#readme"
+}

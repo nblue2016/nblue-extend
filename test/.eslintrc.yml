@@ -1,0 +1,5 @@
+---
+  rules:
+    id-length: 0
+    no-magic-numbers: 0
+    max-statements: 0
