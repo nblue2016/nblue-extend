@@ -1,7 +1,13 @@
 {
   "name": "nblue-extend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "nblue modules to extend native object",
+  "keywords": [
+    "javascript",
+    "native extend",
+    "promise",
+    "date format"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "npm test"
@@ -15,19 +21,20 @@
     "mocha": "^3.2.0"
   },
   "files": [
-    "lib",
+    "lib/*.js",
     "index.js",
     "readme.md"
   ],
   "main": "index",
-  "keywords": [
-    "native"
-  ],
   "scripts":{
     "test":"mocha test/start"
   },
   "author": "Bruce Jiang",
   "license": "MIT",
+  "_npmUser": {
+    "name": "nblue2016",
+    "email": "nblue2016@163.com"
+  },
   "bugs": {
     "url": "https://github.com/nblue2016/nblue-extend/issues"
   },
