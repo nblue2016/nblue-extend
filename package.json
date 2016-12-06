@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/nblue2016/nblue-extend.git"
   },
+  "devDependencies": {
+    "eslint": "^2.10.2",
+    "mocha": "^3.2.0"
+  },
   "files": [
     "lib",
     "index.js",
