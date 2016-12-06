@@ -1,6 +1,6 @@
 {
   "name": "nblue-extend",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "nblue modules to extend native object",
   "keywords": [
     "javascript",
