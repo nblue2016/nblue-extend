@@ -30,8 +30,6 @@ const formatString = (format, ... args) => {
   Array.
     from(format).
     forEach((char, index) => {
-      const charCode = format.charCodeAt(index)
-
       // ignore if previous char is %
       if (index > 0 && format[index - 1] === '%') return
 

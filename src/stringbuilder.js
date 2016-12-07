@@ -23,6 +23,10 @@ class StringBuilder
     this._append(this._buffer, str)
   }
 
+  appendLine (line) {
+    this.append(`${line}\r\n`)
+  }
+
   appendFormat (format, ...items) {
     this.append(String.format(format, ...items))
   }

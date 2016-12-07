@@ -1,4 +1,15 @@
-const querystring = require('querystring')
+const stringifyPrimitive = (v) => {
+  switch (typeof v) {
+  case 'string':
+    return v
+  case 'number':
+    return isFinite(v) ? `${v}` : ''
+  case 'boolean':
+    return v ? 'true' : 'false'
+  default:
+    return ''
+  }
+}
 
 if (!Object.hasOwnProperty('values')) {
   Reflect.defineProperty(
@@ -65,7 +76,60 @@ if (!Object.hasOwnProperty('toFormData')) {
     Object,
     'toFormData',
     {
-      value: (obj) => querystring.stringify(obj)
+      value: (obj, separate, equal, options) => {
+        const sep = separate || '&'
+        const eq = equal || '='
+
+        let encode = escape
+
+        if (options &&
+            typeof options.encodeURIComponent === 'function') {
+          encode = options.encodeURIComponent
+        }
+
+        if (obj !== null && typeof obj === 'object') {
+          const keys = Object.keys(obj)
+          const len = keys.length
+          const flast = len - 1
+
+          let fields = ''
+
+          for (let i = 0; i < len; i += 1) {
+            const k = keys[i]
+            const ks = encode(stringifyPrimitive(k)) + eq
+
+            const v = obj[k]
+
+            if (Array.isArray(v)) {
+              const vlen = v.length
+              const vlast = vlen - 1
+
+              for (let j = 0; j < vlen; j += 1) {
+                fields += ks + encode(stringifyPrimitive(v[j]))
+
+                fields += j < vlast ? sep : 0
+              }
+
+              if (vlen && i < flast) fields += sep
+            } else {
+              fields += ks + encode(stringifyPrimitive(v))
+              if (i < flast) {
+                fields += sep
+              }
+            }
+          }
+
+          return fields
+        }
+
+        return ''
+      }
     }
   )
+}
+
+if (!Object.prototype.toMap) {
+  Object.prototype.toMap = function () {
+    return Object.toMap(this)
+  }
 }

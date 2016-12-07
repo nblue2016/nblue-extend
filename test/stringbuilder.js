@@ -20,6 +20,14 @@ describe('string builder', () => {
     assert.equal(sb.length, 12, 'Tested')
   })
 
+  it('method of appendLine', () => {
+    const sb = new StringBuilder()
+
+    sb.appendLine('abc')
+    sb.appendLine('def')
+    assert.equal(sb.toString(), 'abc\r\ndef\r\n', 'Tested')
+  })
+
   it('method of appendFormat', () => {
     const sb = new StringBuilder()
 
