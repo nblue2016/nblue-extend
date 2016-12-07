@@ -1,6 +1,6 @@
 {
   "name": "nblue-extend",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "nblue modules to extend native object",
   "keywords": [
     "javascript",
@@ -8,27 +8,27 @@
     "promise",
     "date format"
   ],
-  "main": "index.js",
+  "main": "index",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha test/start",
+    "build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nblue2016/nblue-extend.git"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
     "eslint": "^2.10.2",
     "mocha": "^3.2.0"
   },
   "files": [
     "lib/*.js",
+    "src/*.js",
     "index.js",
     "readme.md"
   ],
-  "main": "index",
-  "scripts":{
-    "test":"mocha test/start"
-  },
   "author": "Bruce Jiang",
   "license": "MIT",
   "_npmUser": {
