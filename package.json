@@ -1,12 +1,16 @@
 {
   "name": "nblue-extend",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "nblue modules to extend native object",
   "keywords": [
     "javascript",
-    "native extend",
     "promise",
-    "date format"
+    "date format",
+    "stringbuilder",
+    "string",
+    "builder",
+    "map",
+    "native extend"
   ],
   "main": "index",
   "scripts": {
