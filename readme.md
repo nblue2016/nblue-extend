@@ -61,6 +61,9 @@ sb.insert(2, 'fff')
 
 // insert formatted string
 sb.insertFormat(0, 'abc%sdef', 'aaa')
+
+// clear all buffer
+sb.clear()
 ```
 
 #### extends ___**Date**___, support format data to specialed string value

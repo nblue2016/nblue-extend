@@ -80,6 +80,10 @@ class StringBuilder
     this._buffer.splice(index, length)
   }
 
+  clear () {
+    this._buffer = []
+  }
+
   toString () {
     return this._buffer.join('')
   }

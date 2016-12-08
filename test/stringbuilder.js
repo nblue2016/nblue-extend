@@ -63,6 +63,17 @@ describe('string builder', () => {
     assert.equal(sb.toString(), 'abef', 'Tested')
   })
 
+  it('method of clear', () => {
+    const sb = new StringBuilder()
+
+    sb.append('abc')
+    sb.append('def')
+    assert.equal(sb.length, 6, 'Tested')
+
+    sb.clear()
+    assert.equal(sb.length, 0, 'Tested')
+  })
+
   it('property of length', () => {
     const sb = new StringBuilder()
 
