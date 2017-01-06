@@ -128,8 +128,10 @@ if (!Object.hasOwnProperty('toFormData')) {
   )
 }
 
+/*
+// remove this method, use Object.toMap to replace
 if (!Object.prototype.toMap) {
   Object.prototype.toMap = function () {
     return Object.toMap(this)
   }
-}
+} */

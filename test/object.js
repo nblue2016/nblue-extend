@@ -105,7 +105,7 @@ describe('object', () => {
       Object.toFormData(obj1), 'a=1&b=2&c=3&d=4', 'form data')
   })
 
-  it('method of toMap', () => {
+  /* it('method of toMap', () => {
     const obj = {
       key1: 'val1',
       key2: 'val2',
@@ -121,5 +121,5 @@ describe('object', () => {
     assert.equal(map.get('key1'), 'val1', 'ok')
     assert.equal(map.get('key2'), 'val2', 'ok')
     assert.equal(map.get('key3'), 'val3', 'ok')
-  })
+  }) */
 })
