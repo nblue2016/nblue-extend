@@ -6,14 +6,30 @@ if (!Map.prototype.toObject) {
     for (const key of ctx.keys()) {
       const val = ctx.get(key)
 
-      if (val instanceof Map) {
-        obj[key] = val.toObject()
-      }
-
-      obj[key] = val
+      obj[key] = val instanceof Map ? val.toObject() : val
     }
 
     return obj
+  }
+}
+
+if (!Map.prototype.select) {
+  Map.prototype.select = function (path) {
+    const items = path.split('/')
+    const that = this
+
+    let
+      parent = that,
+      result = null
+
+    for (const key of items) {
+      result = parent.has(key) ? parent.get(key) : null
+      if (result === null) break
+
+      parent = result
+    }
+
+    return result
   }
 }
 

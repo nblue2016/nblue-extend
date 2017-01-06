@@ -66,7 +66,7 @@ sb.insertFormat(0, 'abc%sdef', 'aaa')
 sb.clear()
 ```
 
-#### extends ___**Date**___, support format data to specialed string value
+#### extends ___**Date**___, support format data to special string value
 
 
 Parse String value to Date
@@ -138,7 +138,7 @@ Promise.
   })
 
 // method of done
-// it will throw uncaught erorr
+// it will throw uncaught error
 Promise.
   resolve(0).
   then(() => Promise.reject(-1)).
@@ -180,7 +180,7 @@ map.
 
 const obj = map.toObject()
 
-// output convertted object
+// output converted object
 console.log(obj)
 ```
 
@@ -195,15 +195,14 @@ const obj = {
 
 const map = obj.toMap()
 
-// output convertted map
+// output converted map
 console.log(map)
 ```
 
 ## License
 The MIT License (MIT)
 
-Copyright © 2014 Halil İbrahim ŞAFAK
-
+Copyright © 2017 Bruce Jiang
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
