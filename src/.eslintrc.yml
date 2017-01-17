@@ -1,6 +1,9 @@
 ---
   rules:
     id-length: 0
-    no-extend-native: 0
+    no-bitwise: 0 # disallow bitwise operators
     no-eval: [0, { allowIndirect: true }]
+    no-extend-native: 0
     no-magic-numbers: 0
+    no-plusplus: 0
+    no-underscore-dangle: 0

@@ -164,7 +164,7 @@
     max-len: 1 # enforce a maximum line length
     max-nested-callbacks: 1 # enforce a maximum depth that callbacks can be nested
     max-params: [1, 6]  # enforce a maximum number of parameters in function definitions
-    max-statements: [1, { max: 30 }]  # enforce a maximum number of statements allowed in function blocks
+    max-statements: [1, { max: 50 }]  # enforce a maximum number of statements allowed in function blocks
     max-statements-per-line: 1 # enforce a maximum number of statements allowed per line
     new-cap: [1, {capIsNew: false}]  # require constructor function names to begin with a capital letter
     new-parens: 1 # require parentheses when invoking a constructor with no arguments

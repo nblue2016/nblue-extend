@@ -24,7 +24,7 @@ npm test
 #### Class ___**StringBuilder**___
 
 
-an StringBuilder for javascript
+A class of StringBuilder for javascript
 
 ``` javascript
 // StringBuilder example
@@ -64,6 +64,28 @@ sb.insertFormat(0, 'abc%sdef', 'aaa')
 
 // clear all buffer
 sb.clear()
+```
+
+### Usage:
+
+#### Class ___**UUID**___
+
+
+To create UUID with javascript
+
+``` javascript
+// StringBuilder example
+const lib = require('nblue-extend')
+const UUID = lib.UUID
+
+// output 'd446be70-dc96-11e6-8309-0d01090e080f'
+console.log(UUID.generate('v1'))
+
+// output '03010607-0508-4d03-8f06-0b080a0a0904'
+console.log(UUID.generate('v4'))
+
+// output '{0d080704-0b08-4709-8102-0a010f00080e}'
+console.log(UUID.generate('guid'))
 ```
 
 #### extends ___**Date**___, support format data to special string value

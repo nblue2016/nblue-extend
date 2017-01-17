@@ -80,7 +80,7 @@ describe('promise', () => {
       then((data) => assert.deepEqual(data, [2, 4, 6], 'mapped array')).
       then(() => Promise.resolve(4)).
       map((a) => a * 2).
-      then((data) => assert.equal(data, 4, 'mapped value')).
+      then((data) => assert.deepEqual(data, 8, 'mapped value')).
       then(() => done()).
       catch((err) => done(err))
   })
@@ -92,7 +92,21 @@ describe('promise', () => {
       then((data) => assert.deepEqual(data, [3, 4, 5], 'filtered array')).
       then(() => Promise.resolve(4)).
       filter((a) => a > 2).
-      then(() => done(new Error('doesn\'t support'))).
-      catch(() => done())
+      then((data) => assert.deepEqual(data, 4, 'ok')).
+      then(() => done()).
+      catch((err) => done(err))
+  })
+
+  it('method of each', (done) => {
+    let rt = 0
+
+    Promise.
+      resolve([1, 2, 3, 4, 5]).
+      each((val) => {
+        rt += val
+      }).
+      then(() => assert.ok(rt, 15, 'ok')).
+      then(() => done()).
+      catch((err) => done(err))
   })
 })

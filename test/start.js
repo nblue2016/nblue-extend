@@ -7,7 +7,8 @@ const files = [
   './object',
   './promise',
   './string',
-  './stringbuilder'
+  './stringbuilder',
+  './uuid'
 ]
 
 

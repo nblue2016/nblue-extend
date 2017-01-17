@@ -40,8 +40,35 @@ if (!Promise.prototype.map) {
     function (callback) {
       return this.
         then(
-          (data) =>
-            Promise.resolve(Array.isArray(data) ? data.map(callback) : data),
+          (data) => {
+            if (data) {
+              return Promise.resolve(
+                Array.isArray(data)
+                  ? data.map(callback)
+                  : [data].map(callback)[0]
+              )
+            }
+
+            return []
+          },
+          (err) => Promise.reject(err)
+        )
+    }
+}
+
+// define each method, fetch every item in result of promise .then
+if (!Promise.prototype.each) {
+  Promise.prototype.each =
+    function (callback) {
+      return this.
+        then(
+          (data) => {
+            if (data) {
+              const rt = Promise.resolve(Array.isArray(data)) ? data : [data]
+
+              rt.forEach(callback)
+            }
+          },
           (err) => Promise.reject(err)
         )
     }
@@ -54,11 +81,19 @@ if (!Promise.prototype.filter) {
       return this.
         then(
           (data) => {
-            if (Array.isArray(data)) {
-              return Promise.resolve(data.filter(callback))
+            if (data) {
+              let rt = Array.isArray(data)
+                ? data.filter(callback)
+                : [data].filter(callback)
+
+              if (!Array.isArray(data) && rt) {
+                rt = rt[0]
+              }
+
+              return Promise.resolve(rt)
             }
 
-            return Promise.reject(new Error('filter method doesn\'t support'))
+            return []
           },
           (err) => Promise.reject(err)
         )
