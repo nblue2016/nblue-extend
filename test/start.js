@@ -3,6 +3,7 @@ require('../index.js')
 const files = [
   './array',
   './date',
+  './iif',
   './map',
   './object',
   './promise',

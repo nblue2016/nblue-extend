@@ -21,6 +21,38 @@ npm test
 
 ### Usage:
 
+#### Class ___**IIf**___
+
+
+Returns one of two objects or function, depending on the evaluation of an expression.
+
+``` javascript
+// IIf example
+const lib = require('nblue-extend')
+const IIf = lib.IIf
+
+// return an object
+const rt = IIf(true, 1, 0)
+
+// output 1
+console.log(rt)
+
+// return a function
+const rt = IIf(() => true, () => 1, () => 0)
+
+// output 1
+console.log(rt)
+
+// return a Promise
+const rt = IIf(true, () => Promise.resolve(), () => Promise.reject(-1)
+
+// output 1
+rt.then((data) => console.log(data))
+
+```
+
+### Usage:
+
 #### Class ___**StringBuilder**___
 
 

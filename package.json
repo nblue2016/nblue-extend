@@ -1,6 +1,6 @@
 {
   "name": "nblue-extend",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "nblue modules to extend native object",
   "keywords": [
     "uuid",
@@ -26,7 +26,6 @@
   },
   "files": [
     "lib/*.js",
-    "src/*.js",
     "index.js",
     "readme.md"
   ],
