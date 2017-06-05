@@ -73,6 +73,16 @@ describe('promise', () => {
       then(() => done())
   })
 
+  it('method of spread', (done) => {
+    Promise.all([1, 2, 3]).
+      spread((a, b, c) => a + b + c).
+      then((data) => assert.equal(data, 6, 'ok')).
+      then(() => Promise.resolve(1)).
+      spread((data) => assert.equal(data, 1, 'ok')).
+      then(() => done()).
+      catch((err) => done(err))
+  })
+
   it('method of map', (done) => {
     Promise.
       resolve([1, 2, 3]).

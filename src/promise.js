@@ -34,6 +34,25 @@ if (!Promise.prototype.finally) {
     }
 }
 
+// define spread method, flattened to the formal parameters of
+// the fulfillment handler.
+if (!Promise.prototype.spread) {
+  Promise.prototype.spread =
+    function (callback) {
+      return this.
+        then(
+          (data) => {
+            if (!data) return Promise.resolve(null)
+
+            return Promise.resolve(
+              Array.isArray(data) ? callback(...data) : callback(data)
+            )
+          },
+          (err) => Promise.reject(err)
+        )
+    }
+}
+
 // define map method, map array result of promise .then
 if (!Promise.prototype.map) {
   Promise.prototype.map =
