@@ -18,15 +18,15 @@ if (!Promise.prototype.done) {
 // define finally method, it will be executed after then and catch methods
 if (!Promise.prototype.finally) {
   Promise.prototype.finally =
-    function (callback) {
+    function (promise) {
       return this.
         then(
           (data) =>
-            Promise.resolve(callback()).
+            Promise.resolve(promise()).
               then(() => data)
           ,
           (err) =>
-            Promise.resolve(callback()).
+            Promise.resolve(promise()).
               then(() => {
                 throw err
               })
@@ -38,14 +38,14 @@ if (!Promise.prototype.finally) {
 // the fulfillment handler.
 if (!Promise.prototype.spread) {
   Promise.prototype.spread =
-    function (callback) {
+    function (func) {
       return this.
         then(
           (data) => {
             if (!data) return Promise.resolve(null)
 
             return Promise.resolve(
-              Array.isArray(data) ? callback(...data) : callback(data)
+              Array.isArray(data) ? func(...data) : func(data)
             )
           },
           (err) => Promise.reject(err)
@@ -53,18 +53,47 @@ if (!Promise.prototype.spread) {
     }
 }
 
+// define tap method, pass the result to next promise function
+if (!Promise.prototype.tap) {
+  Promise.prototype.tap =
+    function (func) {
+      return this.
+        then(
+          (data) => Promise.resolve(func(data)).then(() => data),
+          (err) => Promise.reject(err)
+        )
+    }
+}
+
+// define nodeify method, Call nodeify directly passing the promise and
+// an optional callback as arguments. If a callback is provided it will be
+// called as callback(error, result). If callback is not a function,
+// promise is returned.
+if (!Promise.prototype.nodeify) {
+  Promise.prototype.nodeify =
+    function (callback) {
+      if (callback) {
+        return this.
+          then(
+            (data) => callback(null, data),
+            (err) => callback(err)
+          )
+      }
+
+      return this.then((data) => data, (err) => Promise.reject(err))
+    }
+}
+
 // define map method, map array result of promise .then
 if (!Promise.prototype.map) {
   Promise.prototype.map =
-    function (callback) {
+    function (func) {
       return this.
         then(
           (data) => {
             if (data) {
               return Promise.resolve(
-                Array.isArray(data)
-                  ? data.map(callback)
-                  : [data].map(callback)[0]
+                Array.isArray(data) ? data.map(func) : [data].map(func)[0]
               )
             }
 
@@ -78,14 +107,16 @@ if (!Promise.prototype.map) {
 // define each method, fetch every item in result of promise .then
 if (!Promise.prototype.each) {
   Promise.prototype.each =
-    function (callback) {
+    function (func) {
       return this.
         then(
           (data) => {
             if (data) {
+              // resolve result
               const rt = Promise.resolve(Array.isArray(data)) ? data : [data]
 
-              rt.forEach(callback)
+              // call forEach function for array
+              if (rt) rt.forEach(func)
             }
           },
           (err) => Promise.reject(err)
@@ -96,23 +127,18 @@ if (!Promise.prototype.each) {
 // define filter method, filter array result of promise .then
 if (!Promise.prototype.filter) {
   Promise.prototype.filter =
-    function (callback) {
+    function (func) {
       return this.
         then(
           (data) => {
-            if (data) {
-              let rt = Array.isArray(data)
-                ? data.filter(callback)
-                : [data].filter(callback)
+            // return empty array if there is no data
+            if (!data) return []
 
-              if (!Array.isArray(data) && rt) {
-                rt = rt[0]
-              }
+            // call filter function for array
+            const rt = (Array.isArray(data) ? data : [data]).filter(func)
 
-              return Promise.resolve(rt)
-            }
-
-            return []
+            // resolve result
+            return Promise.resolve(!Array.isArray(data) && rt ? rt[0] : rt)
           },
           (err) => Promise.reject(err)
         )

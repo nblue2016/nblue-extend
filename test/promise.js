@@ -83,6 +83,30 @@ describe('promise', () => {
       catch((err) => done(err))
   })
 
+  it('method of tap', (done) => {
+    Promise.resolve(2).
+      tap((data) => assert.equal(data, 2, 'ok')).
+      tap(() => null).
+      then((data) => assert.equal(data, 2, 'ok')).
+      then(() => done()).
+      catch((err) => done(err))
+  })
+
+  it('method of nodeify', (done) => {
+    Promise.resolve(2).
+      nodeify((err, data) => {
+        assert.equal(data, 2, 'ok')
+        done(err)
+      })
+  })
+
+  it('method of nodeify with error', (done) => {
+    Promise.reject(new Error('test')).
+      nodeify((err) => {
+        done(err ? null : new Error('unknown'))
+      })
+  })
+
   it('method of map', (done) => {
     Promise.
       resolve([1, 2, 3]).
