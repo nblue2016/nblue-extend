@@ -40,8 +40,8 @@ if (!Map.prototype.toJSON) {
     }
 }
 
-if (!Map.prototype.get2) {
-  Map.prototype.get2 =
+if (!Map.prototype.getWithDefault) {
+  Map.prototype.getWithDefault =
     function (key, defVal) {
       return this.has(key) ? this.get(key) : defVal
     }

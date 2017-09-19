@@ -20,12 +20,12 @@ describe('map', () => {
     set('ary2', 's1').
     set('ary3', ['s1', 's2', 's3'])
 
-  it('method of get2', () => {
+  it('method of getWithDefault', () => {
     assert.equal(map.get('key1'), 'val1', 'ok')
     assert.equal(map.get('key2'), 'val2', 'ok')
     assert.equal(map.get('key3'), 'val3', 'ok')
     assert.equal(map.get('key4'), null, 'ok')
-    assert.equal(map.get2('key4', 'val4'), 'val4', 'ok')
+    assert.equal(map.getWithDefault('key4', 'val4'), 'val4', 'ok')
   })
 
   it('method of toObject', () => {
@@ -54,10 +54,12 @@ describe('map', () => {
     const v1 = map2.select('k1')
     const v2 = map2.select('k4/key2')
     const v3 = map2.select('k4/key33')
+    const v4 = map2.select('k5/key2')
 
     assert.equal(v1, 'v1', 'ok')
     assert.equal(v2, 'val2', 'ok')
     assert.ok(!v3, 'ok')
+    assert.ok(!v4, 'ok')
   })
 
   it('method of toJSON', () => {

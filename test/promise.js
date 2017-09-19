@@ -83,6 +83,13 @@ describe('promise', () => {
       catch((err) => done(err))
   })
 
+  it('method of spread with error', (done) => {
+    Promise.reject([1, 2, 3]).
+      spread(() => done(new Error('unexpected'))).
+      catch(() => done())
+  })
+
+
   it('method of tap', (done) => {
     Promise.resolve(2).
       tap((data) => assert.equal(data, 2, 'ok')).
@@ -90,6 +97,12 @@ describe('promise', () => {
       then((data) => assert.equal(data, 2, 'ok')).
       then(() => done()).
       catch((err) => done(err))
+  })
+
+  it('method of tap with error', (done) => {
+    Promise.reject(2).
+      tap(() => done(new Error('unexpected'))).
+      catch(() => done())
   })
 
   it('method of nodeify', (done) => {
@@ -119,6 +132,14 @@ describe('promise', () => {
       catch((err) => done(err))
   })
 
+  it('method of map with error', (done) => {
+    Promise.reject([1, 2, 3]).
+      map((data) => data * 2).
+      then(() => done(new Error('unexpected'))).
+      catch(() => done())
+  })
+
+
   it('method of filter', (done) => {
     Promise.
       resolve([1, 2, 3, 4, 5]).
@@ -129,6 +150,13 @@ describe('promise', () => {
       then((data) => assert.deepEqual(data, 4, 'ok')).
       then(() => done()).
       catch((err) => done(err))
+  })
+
+  it('method of filter with error', (done) => {
+    Promise.reject([1, 2, 3]).
+      filter((data) => data >= 2).
+      then(() => done(new Error('unexpected'))).
+      catch(() => done())
   })
 
   it('method of each', (done) => {
@@ -142,5 +170,17 @@ describe('promise', () => {
       then(() => assert.ok(rt, 15, 'ok')).
       then(() => done()).
       catch((err) => done(err))
+  })
+
+  it('method of each with error', (done) => {
+    let rt = 0
+
+    Promise.reject([1, 2, 3]).
+      each((data) => {
+        rt += data
+      }).
+      then(() => assert.equal(rt, 6, 'equal')).
+      then(() => done(new Error('unexpected'))).
+      catch(() => done())
   })
 })
