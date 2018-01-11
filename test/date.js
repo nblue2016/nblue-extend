@@ -3,53 +3,53 @@ const assert = require('assert')
 describe('date', () => {
   it('method of format', () => {
     const d1 = new Date(2016, 1, 5, 14, 33, 12)
-        // Date.parseDate('2016/02/05 14:33:12')
+    // Date.parseDate('2016/02/05 14:33:12')
     const d2 = '2016/02/05 14:33:12'.toDate()
     const d3 = new Date(2016, 1, 5, 9, 3, 1)
-        // Date.parseDate('2016/02/05 9:3:1')
+    // Date.parseDate('2016/02/05 9:3:1')
     const d4 = '2016/05/24 9:3:1'.toDate()
     const d5 = '2015/11/24 9:3:1'.toDate()
 
     assert.equal(d1.format('MM/dd/yyyy'), '02/05/2016',
-        "date.format('MM/dd/yyyy') should equal '02/05/2016'")
+      "date.format('MM/dd/yyyy') should equal '02/05/2016'")
     assert.equal(d1.format('M/d/yy'), '2/5/16',
-        "date.format('M/d/yy') should equal '2/5/16'")
+      "date.format('M/d/yy') should equal '2/5/16'")
     assert.equal(d2.format('MM/dd/yyyy'), '02/05/2016',
-        "date.format('MM/dd/yyyy') should equal '02/05/2016'")
+      "date.format('MM/dd/yyyy') should equal '02/05/2016'")
     assert.equal(d2.format('M/d/yy'), '2/5/16',
-        "date.format('M/d/yy') should equal '2/5/16'")
+      "date.format('M/d/yy') should equal '2/5/16'")
     assert.equal(d1.format('HH-mm-ss'), '14-33-12',
-        "date.format('HH-mm-ss') should equal '14-33-12'")
+      "date.format('HH-mm-ss') should equal '14-33-12'")
     assert.equal(d1.format('H-m-s'), '14-33-12',
-        "date.format('H-m-s') should equal '14-33-12'")
+      "date.format('H-m-s') should equal '14-33-12'")
     assert.equal(d3.format('HH-mm-ss'), '09-03-01',
-        "date.format('HH-mm-ss') should equal '09-03-01'")
+      "date.format('HH-mm-ss') should equal '09-03-01'")
     assert.equal(d3.format('H-m-s'), '9-3-1',
-        "date.format('H-m-s') should equal '9-3-1'")
+      "date.format('H-m-s') should equal '9-3-1'")
 
     assert.equal(d1.format('HH-mm-ss tt'), '14-33-12 pm',
-        "date.format('HH-mm-ss tt') should equal '14-33-12 pm'")
+      "date.format('HH-mm-ss tt') should equal '14-33-12 pm'")
     assert.equal(d1.format('HH-mm-ss TT'), '14-33-12 PM',
-        "date.format('HH-mm-ss TT') should equal '14-33-12 PM'")
+      "date.format('HH-mm-ss TT') should equal '14-33-12 PM'")
     assert.equal(d3.format('H-m-s tt'), '9-3-1 am',
-        "date.format('H-m-s tt') should equal '9-3-1 am'")
+      "date.format('H-m-s tt') should equal '9-3-1 am'")
     assert.equal(d3.format('H-m-s TT'), '9-3-1 AM',
-        "date.format('H-m-s TT') should equal '9-3-1 AM'")
+      "date.format('H-m-s TT') should equal '9-3-1 AM'")
 
     assert.equal(d4.format('ddd', { supportName: true }), 'Tue',
-        "date.format('ddd') should equal 'Tue'")
+      "date.format('ddd') should equal 'Tue'")
     assert.equal(d4.format('dddd', { supportName: true }), 'Tuesday',
-        "date.format('dddd') should equal 'Tuesday'")
+      "date.format('dddd') should equal 'Tuesday'")
 
     assert.equal(d1.format('MMM', { supportName: true }), 'Feb',
-        "date.format('MMM') should equal 'Feb'")
+      "date.format('MMM') should equal 'Feb'")
     assert.equal(d1.format('MMMM', { supportName: true }), 'February',
-        "date.format('MMMM') should equal 'February'")
+      "date.format('MMMM') should equal 'February'")
 
     assert.equal(d5.format('MMM', { supportName: true }), 'Nov',
-        "date.format('MMM') should equal 'Nov'")
+      "date.format('MMM') should equal 'Nov'")
     assert.equal(d5.format('MMMM', { supportName: true }), 'November',
-        "date.format('MMMM') should equal 'November'")
+      "date.format('MMMM') should equal 'November'")
   })
 
   it('method of isLeapYear', () => {
@@ -87,8 +87,8 @@ describe('date', () => {
   })
 
   it('method of addDays', () => {
-      // const date1 = Date.parseDate('2016/04/29')
-      // const date3 = Date.parseDate('2016/04/29')
+    // const date1 = Date.parseDate('2016/04/29')
+    // const date3 = Date.parseDate('2016/04/29')
     const date1 = new Date(2016, 3, 29, 0, 0, 0)
     const date2 = new Date(2016, 4, 29, 0, 0, 0)
     const date3 = new Date(2016, 5, 28, 0, 0, 0)
@@ -105,8 +105,8 @@ describe('date', () => {
   })
 
   it('method of addMonths', () => {
-      // const date1 = Date.parseDate('2016/04/29')
-      // const date3 = Date.parseDate('2016/04/29')
+    // const date1 = Date.parseDate('2016/04/29')
+    // const date3 = Date.parseDate('2016/04/29')
     const date1 = new Date(2016, 3, 29, 0, 0, 0)
     const date2 = new Date(2018, 9, 29, 0, 0, 0)
     const date3 = new Date(2023, 9, 29, 0, 0, 0)

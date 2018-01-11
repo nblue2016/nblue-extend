@@ -53,37 +53,36 @@ const createDict = (ctx) => {
     dddd: `$$$$$$${ctx.getDay()}`,
     ddd: `$$$$${ctx.getDay()}`,
     dd: ctx.getDate().
-          toString().
-          padStart(2, '0'),
+      toString().
+      padStart(2, '0'),
     d: ctx.getDate(),
     MMMM: `___${ctx.getMonth() + 1}`,
     MMM: `__${ctx.getMonth() + 1}`,
     MM: (ctx.getMonth() + 1).
-            toString().
-            padStart(2, '0'),
-    M: (ctx.getMonth() + 1).
-                    toString(),
+      toString().
+      padStart(2, '0'),
+    M: (ctx.getMonth() + 1).toString(),
     yyyy: ctx.getFullYear(),
     yyy: ctx.getFullYear(),
     yy: ctx.getFullYear().
-            toString().
-            substr(2, 2),
+      toString().
+      substr(2, 2),
     HH: ctx.getHours().
-                    toString().
-                    padStart(2, '0'),
+      toString().
+      padStart(2, '0'),
     H: ctx.getHours(),
     hh: (ctx.getHours() % 12 || 12).
-        toString().
-        padStart(2, '0'),
+      toString().
+      padStart(2, '0'),
     h: (ctx.getHours() % 12 || 12).
-            toString(),
+      toString(),
     mm: ctx.getMinutes().
-            toString().
-            padStart(2, '0'),
+      toString().
+      padStart(2, '0'),
     m: ctx.getMinutes(),
     ss: ctx.getSeconds().
-            toString().
-            padStart(2, '0'),
+      toString().
+      padStart(2, '0'),
     s: ctx.getSeconds(),
     L: (() => {
       let m = ctx.getMilliseconds()
@@ -93,8 +92,8 @@ const createDict = (ctx) => {
       return m.toString().padStart(3, '0')
     })(),
     l: ctx.getMilliseconds().
-          toString().
-          padStart(3, '0'),
+      toString().
+      padStart(3, '0'),
     S: ctx.getMilliseconds(),
     TT: ctx.getHours() < 12 ? 'AM' : 'PM',
     tt: ctx.getHours() < 12 ? 'am' : 'pm',

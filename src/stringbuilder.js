@@ -1,5 +1,4 @@
-class StringBuilder
-{
+class StringBuilder {
 
   constructor () {
     this._buffer = []

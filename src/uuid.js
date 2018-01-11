@@ -8,8 +8,7 @@ let
   _byteToHex = null,
   _seedBytes = null
 
-class UUID
-{
+class UUID {
 
   constructor () {
     this._clockSeq = null
@@ -21,8 +20,9 @@ class UUID
     const that = this
 
     if (!_seedBytes) {
-      _seedBytes = Array.range(1, countOfHex).
-                        map(() => that.rnd())
+      _seedBytes = Array.
+        range(1, countOfHex).
+        map(() => that.rnd())
     }
 
     return _seedBytes
